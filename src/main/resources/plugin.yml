@@ -1,0 +1,17 @@
+﻿name: DelyHordes
+version: 0.1
+main: com.sweityuo.delyHordes.Main
+api-version: 1.16
+depend: [PlaceholderAPI]
+
+
+
+commands:
+  delyHordes:
+    description: Главная команда плагина
+    usage: "/delyHordes"
+    aliases: [dK]
+permissions:
+  delyHordes.admin:
+    description: Allows admin commands
+    default: op

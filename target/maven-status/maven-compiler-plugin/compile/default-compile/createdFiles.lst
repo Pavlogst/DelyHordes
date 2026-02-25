@@ -1,0 +1,12 @@
+com\sweityuo\delyHordes\MessageManager.class
+com\sweityuo\delyHordes\yml\CustomYml.class
+com\sweityuo\delyHordes\Main.class
+com\sweityuo\delyHordes\listeners\MobDeathListener.class
+com\sweityuo\delyHordes\utils\ColorUtil.class
+com\sweityuo\delyHordes\utils\WavesUtil.class
+com\sweityuo\delyHordes\utils\WavesUtil$1.class
+com\sweityuo\delyHordes\Event\LootContoller.class
+com\sweityuo\delyHordes\placeholders\MyExpansion.class
+com\sweityuo\delyHordes\utils\BossBarUtil.class
+com\sweityuo\delyHordes\mobs\MobManager.class
+com\sweityuo\delyHordes\mobs\Mob.class

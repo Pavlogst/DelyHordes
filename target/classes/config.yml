@@ -1,0 +1,56 @@
+﻿# ▌Спасибо за выбор моего плагина!
+# ▌Плагин находится в активной разработке,
+#  поэтому возможны баги. Пожалуйста, сообщайте о них в Telegram.
+# ▌Telegram моей начинающей студии: t.me/delyPlugins
+
+
+global:
+  world: world
+  poss1:
+    x:
+    y:
+    z:
+  poss2:
+    x:
+    y:
+    z:
+  mobsAmount: 50
+  mobSpawnTime: 10
+  maxMobAmountInMoment: 10
+BossBar:
+  enable: true
+  type: SEGMENTED_10
+  color: BLUE
+  text: "#55d6ff💧 Осталось мобой: #a8f0ff%mobsLeft%"
+mobs:
+  wither_skeleton:
+    type: WITHER_SKELETON
+    customName: "Визер скелет"
+    stats:
+      health: 100
+      attackDamage: 5
+    effects:
+      - GLOWING;2
+      - SPEED;2
+      - STRENGTH;3
+
+messages:
+  onReload: "#8B6B1FПлагин перезагружен"
+  onStarted:
+    - ""
+    - "#C89B2BОрды начали наступай скорее на арену!"
+    - ""
+  use:
+    - "§eИспользование:"
+    - "§f/delyHordes start"
+    - "§f/delyHordes stop"
+    - "§f/delyHordes addLoot <chance>"
+    - "§f/delyHordes removeLoot"
+    - "§f/delyHordes reload"
+
+  noPermission: "§cНет прав."
+  stoped: "§cОрда сейчас не запущена."
+
+  lootAdded: "§aПредмет добавлен в лут. Шанс: %chance%"
+  lootRemoved: "§aПредмет удалён из лута."
+  lootNoItemInHand: "§cВ руке нет предмета!"
