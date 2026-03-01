@@ -62,11 +62,18 @@ public class BossBarUtil {
             return b;
         });
 
+        int left = wavesUtil.getLeftAmount();
+        int total = Math.max(wavesUtil.getTotalAmount(), 1);
+
+        double progress = Math.max(0.0, Math.min(1.0, (double) left / total));
+
         String title = text
-                .replace("%mobsLeft%", String.valueOf(wavesUtil.getLeftAmount()));
+                .replace("%mobsLeft%", String.valueOf(wavesUtil.getLeftAmount()))
+                .replace("%wave%", String.valueOf(wavesUtil.getCurrentWave()))
+                .replace("%waves%", String.valueOf(wavesUtil.getTotalWaves()));
 
         bar.setTitle(title);
-        bar.setProgress(1.0);
+        bar.setProgress(progress);
         bar.setVisible(true);
     }
 

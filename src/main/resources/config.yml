@@ -1,45 +1,171 @@
 ﻿# ▌Спасибо за выбор моего плагина!
 # ▌Плагин находится в активной разработке,
-#  поэтому возможны баги. Пожалуйста, сообщайте о них в Telegram.
+# ▌поэтому возможны баги. Пожалуйста, сообщайте о них в Telegram.
 # ▌Telegram моей начинающей студии: t.me/delyPlugins
-
 
 global:
   world: world
   poss1:
-    x:
-    y:
-    z:
+    x: 79
+    y: 112
+    z: 47
   poss2:
-    x:
-    y:
-    z:
-  mobsAmount: 50
-  mobSpawnTime: 10
-  maxMobAmountInMoment: 10
+    x: 96
+    y: 91
+    z: 82
+
+  mobSpawnTime: 10 #Время спавна мобов в тиках
+  maxMobAmountInMoment: 10 #Макс колво мобов в один момент
+
 BossBar:
   enable: true
   type: SEGMENTED_10
   color: BLUE
-  text: "#55d6ff💧 Осталось мобой: #a8f0ff%mobsLeft%"
+  text: "#55d6ff💧 Волна %wave%/%waves% • Осталось: %mobsLeft%"
+
 mobs:
-  wither_skeleton:
-    type: WITHER_SKELETON
-    customName: "Визер скелет"
+  zombie_warrior:
+    type: ZOMBIE
+    customName: "#55ff55Зомби воин"
+
     stats:
-      health: 100
-      attackDamage: 5
+      health: 40
+      attackDamage: 4
+
     effects:
-      - GLOWING;2
-      - SPEED;2
-      - STRENGTH;3
+      - SPEED;1
+
+    equipment:
+      mainHand:
+        material: IRON_SWORD
+
+      armor:
+        helmet:
+          material: IRON_HELMET
+        chestplate:
+          material: IRON_CHESTPLATE
+        leggings:
+          material: IRON_LEGGINGS
+        boots:
+          material: IRON_BOOTS
+
+
+  skeleton_archer:
+    type: SKELETON
+    customName: "#AAAAAAСкелет лучник"
+
+    stats:
+      health: 30
+      attackDamage: 3
+
+    effects:
+      - SPEED;1
+
+    equipment:
+      mainHand:
+        material: BOW
+
+
+  spider_fast:
+    type: SPIDER
+    customName: "#aa00ffБыстрый паук"
+
+    stats:
+      health: 24
+      attackDamage: 3
+
+    effects:
+      - SPEED;3
+      - JUMP;2
+
+
+  husk_tank:
+    type: HUSK
+    customName: "#d4a017Танк пустыни"
+
+    stats:
+      health: 120
+      attackDamage: 6
+
+    effects:
+      - DAMAGE_RESISTANCE;2
+
+    equipment:
+      armor:
+        helmet:
+          material: DIAMOND_HELMET
+        chestplate:
+          material: DIAMOND_CHESTPLATE
+
+
+  baby_zombie:
+    type: ZOMBIE
+    customName: "#ff5555Бешеный малыш"
+
+    stats:
+      health: 20
+      attackDamage: 5
+
+    effects:
+      - SPEED;4
+      - INCREASE_DAMAGE;1
+
+
+
+
+
+waves:
+  list:
+    wave1:
+      mobs:
+        - id: zombie_warrior
+          amount: 5
+    wave2:
+      mobs:
+        - id: skeleton_archer
+          amount: 6
+    wave3:
+      mobs:
+        - id: husk_tank
+          amount: 3
+        - id: skeleton_archer
+          amount: 6
+        - id: zombie_warrior
+          amount: 5
+
+
+
+topDamage:
+  enable: true
+
+  commands:
+    1:
+      - "give %player% diamond 5"
+      - "eco give %player% 1000"
+    2:
+      - "eco give %player% 500"
+    3:
+      - "eco give %player% 250"
+
+  broadcast:
+    - ""
+    - "#FFD700🏆 Топ по урону:"
+    - "#FFD7001 место: #FFFFFF%top1%"
+    - "#C0C0C02 место: #FFFFFF%top2%"
+    - "#CD7F323 место: #FFFFFF%top3%"
+    - ""
+
+
+
 
 messages:
   onReload: "#8B6B1FПлагин перезагружен"
+
   onStarted:
     - ""
-    - "#C89B2BОрды начали наступай скорее на арену!"
+    - "#C89B2BОрды начали наступление! Скорее на арену!"
     - ""
+
   use:
     - "§eИспользование:"
     - "§f/delyHordes start"

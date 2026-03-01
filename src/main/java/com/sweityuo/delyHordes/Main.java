@@ -5,6 +5,7 @@ import com.sweityuo.delyHordes.listeners.MobDeathListener;
 import com.sweityuo.delyHordes.mobs.MobManager;
 import com.sweityuo.delyHordes.placeholders.MyExpansion;
 import com.sweityuo.delyHordes.utils.BossBarUtil;
+import com.sweityuo.delyHordes.utils.TopDamageUtil;
 import com.sweityuo.delyHordes.utils.WavesUtil;
 import com.sweityuo.delyHordes.yml.CustomYml;
 import org.bukkit.Bukkit;
@@ -22,7 +23,7 @@ public class Main extends JavaPlugin {
     private MessageManager messageManager;
     private BossBarUtil bossBarUtil;
     private WavesUtil waves;
-
+    private TopDamageUtil topDamageUtil;
 
 
     @Override
@@ -31,6 +32,7 @@ public class Main extends JavaPlugin {
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new MyExpansion(this).register();
         }
+        topDamageUtil = new TopDamageUtil(this);
         mobManager = new MobManager(getConfig().getConfigurationSection("mobs"));
         waves = new WavesUtil(this, mobManager);
         lootController = new LootContoller();
@@ -52,6 +54,9 @@ public class Main extends JavaPlugin {
     }
 
 
+    public TopDamageUtil getTopDamageUtil() {
+        return topDamageUtil;
+    }
     public MessageManager getMessageManager() {
         return messageManager;
     }
@@ -95,6 +100,7 @@ public class Main extends JavaPlugin {
             if (args[0].equalsIgnoreCase("reload")) {
                 waves.stop();
                 reloadConfig();
+                topDamageUtil.reload();
                 bossBarUtil.shutdown();
                 mobManager = new MobManager(getConfig().getConfigurationSection("mobs"));
                 lootController = new LootContoller();
